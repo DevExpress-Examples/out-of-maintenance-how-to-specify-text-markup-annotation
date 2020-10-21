@@ -65,7 +65,9 @@
             this.pdfTextCommentPageGroup1 = new DevExpress.XtraPdfViewer.Bars.PdfTextCommentPageGroup();
             this.pdfFormDataRibbonPage1 = new DevExpress.XtraPdfViewer.Bars.PdfFormDataRibbonPage();
             this.pdfFormDataBarPageGroup1 = new DevExpress.XtraPdfViewer.Bars.PdfFormDataBarPageGroup();
-            this.pdfBarController1 = new DevExpress.XtraPdfViewer.Bars.PdfBarController();
+            this.pdfBarController1 = new DevExpress.XtraPdfViewer.Bars.PdfBarController(this.components);
+            this.pdfNoteCommentPageGroup1 = new DevExpress.XtraPdfViewer.Bars.PdfNoteCommentPageGroup();
+            this.pdfStickyNoteBarItem1 = new DevExpress.XtraPdfViewer.Bars.PdfStickyNoteBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPageNumberEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pdfBarController1)).BeginInit();
@@ -74,17 +76,19 @@
             // pdfViewer1
             // 
             this.pdfViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pdfViewer1.Location = new System.Drawing.Point(0, 141);
+            this.pdfViewer1.Location = new System.Drawing.Point(0, 310);
+            this.pdfViewer1.Margin = new System.Windows.Forms.Padding(6);
             this.pdfViewer1.Name = "pdfViewer1";
-            this.pdfViewer1.Size = new System.Drawing.Size(594, 300);
+            this.pdfViewer1.Size = new System.Drawing.Size(1188, 538);
             this.pdfViewer1.TabIndex = 0;
-            this.pdfViewer1.TextMarkupAnnotationCreating += new DevExpress.XtraPdfViewer.PdfTextMarkupAnnotationCreatingEventHandler(this.pdfViewer1_TextMarkupAnnotationCreating);
+            this.pdfViewer1.AnnotationCreating += new DevExpress.XtraPdfViewer.PdfAnnotationCreatingEventHandler(this.pdfViewer1_TextMarkupAnnotationCreating);
             // 
             // ribbonControl1
             // 
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
+            this.ribbonControl1.SearchEditItem,
             this.pdfFileOpenBarItem1,
             this.pdfFileSaveAsBarItem1,
             this.pdfFilePrintBarItem1,
@@ -113,10 +117,13 @@
             this.pdfTextStrikethroughBarItem1,
             this.pdfTextUnderlineBarItem1,
             this.pdfExportFormDataBarItem1,
-            this.pdfImportFormDataBarItem1});
+            this.pdfImportFormDataBarItem1,
+            this.pdfStickyNoteBarItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 30;
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(24, 24, 24, 24);
+            this.ribbonControl1.MaxItemId = 31;
             this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.OptionsMenuMinWidth = 2640;
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.pdfRibbonPage1,
             this.pdfCommentRibbonPage1,
@@ -124,7 +131,7 @@
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemPageNumberEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(594, 141);
+            this.ribbonControl1.Size = new System.Drawing.Size(1188, 310);
             this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above;
             // 
             // pdfFileOpenBarItem1
@@ -165,7 +172,6 @@
             // 
             this.pdfSetPageNumberBarItem1.Edit = this.repositoryItemPageNumberEdit1;
             this.pdfSetPageNumberBarItem1.EditValue = 0;
-            this.pdfSetPageNumberBarItem1.Enabled = false;
             this.pdfSetPageNumberBarItem1.Id = 7;
             this.pdfSetPageNumberBarItem1.Name = "pdfSetPageNumberBarItem1";
             // 
@@ -315,6 +321,7 @@
             // 
             // pdfFileRibbonPageGroup1
             // 
+            this.pdfFileRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pdfFileRibbonPageGroup1.ItemLinks.Add(this.pdfFileOpenBarItem1);
             this.pdfFileRibbonPageGroup1.ItemLinks.Add(this.pdfFileSaveAsBarItem1);
             this.pdfFileRibbonPageGroup1.ItemLinks.Add(this.pdfFilePrintBarItem1);
@@ -323,11 +330,13 @@
             // pdfFindRibbonPageGroup1
             // 
             this.pdfFindRibbonPageGroup1.AllowTextClipping = false;
+            this.pdfFindRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pdfFindRibbonPageGroup1.ItemLinks.Add(this.pdfFindTextBarItem1);
             this.pdfFindRibbonPageGroup1.Name = "pdfFindRibbonPageGroup1";
             // 
             // pdfNavigationRibbonPageGroup1
             // 
+            this.pdfNavigationRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pdfNavigationRibbonPageGroup1.ItemLinks.Add(this.pdfPreviousPageBarItem1);
             this.pdfNavigationRibbonPageGroup1.ItemLinks.Add(this.pdfNextPageBarItem1);
             this.pdfNavigationRibbonPageGroup1.ItemLinks.Add(this.pdfSetPageNumberBarItem1);
@@ -335,6 +344,7 @@
             // 
             // pdfZoomRibbonPageGroup1
             // 
+            this.pdfZoomRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pdfZoomRibbonPageGroup1.ItemLinks.Add(this.pdfZoomOutBarItem1);
             this.pdfZoomRibbonPageGroup1.ItemLinks.Add(this.pdfZoomInBarItem1);
             this.pdfZoomRibbonPageGroup1.ItemLinks.Add(this.pdfExactZoomListBarSubItem1);
@@ -343,11 +353,13 @@
             // pdfCommentRibbonPage1
             // 
             this.pdfCommentRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.pdfTextCommentPageGroup1});
+            this.pdfTextCommentPageGroup1,
+            this.pdfNoteCommentPageGroup1});
             this.pdfCommentRibbonPage1.Name = "pdfCommentRibbonPage1";
             // 
             // pdfTextCommentPageGroup1
             // 
+            this.pdfTextCommentPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pdfTextCommentPageGroup1.ItemLinks.Add(this.pdfTextHighlightBarItem1);
             this.pdfTextCommentPageGroup1.ItemLinks.Add(this.pdfTextStrikethroughBarItem1);
             this.pdfTextCommentPageGroup1.ItemLinks.Add(this.pdfTextUnderlineBarItem1);
@@ -361,6 +373,7 @@
             // 
             // pdfFormDataBarPageGroup1
             // 
+            this.pdfFormDataBarPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pdfFormDataBarPageGroup1.ItemLinks.Add(this.pdfExportFormDataBarItem1);
             this.pdfFormDataBarPageGroup1.ItemLinks.Add(this.pdfImportFormDataBarItem1);
             this.pdfFormDataBarPageGroup1.Name = "pdfFormDataBarPageGroup1";
@@ -396,16 +409,31 @@
             this.pdfBarController1.BarItems.Add(this.pdfTextUnderlineBarItem1);
             this.pdfBarController1.BarItems.Add(this.pdfExportFormDataBarItem1);
             this.pdfBarController1.BarItems.Add(this.pdfImportFormDataBarItem1);
+            this.pdfBarController1.BarItems.Add(this.pdfStickyNoteBarItem1);
             this.pdfBarController1.Control = this.pdfViewer1;
+            // 
+            // pdfNoteCommentPageGroup1
+            // 
+            this.pdfNoteCommentPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.pdfNoteCommentPageGroup1.ItemLinks.Add(this.pdfStickyNoteBarItem1);
+            this.pdfNoteCommentPageGroup1.Name = "pdfNoteCommentPageGroup1";
+            // 
+            // pdfStickyNoteBarItem1
+            // 
+            this.pdfStickyNoteBarItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.CheckDropDown;
+            this.pdfStickyNoteBarItem1.Id = 30;
+            this.pdfStickyNoteBarItem1.Name = "pdfStickyNoteBarItem1";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 441);
+            this.ClientSize = new System.Drawing.Size(1188, 848);
             this.Controls.Add(this.pdfViewer1);
             this.Controls.Add(this.ribbonControl1);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
+            this.Ribbon = this.ribbonControl1;
             this.Text = "PDF Viewer";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPageNumberEdit1)).EndInit();
@@ -459,6 +487,8 @@
         private DevExpress.XtraPdfViewer.Bars.PdfFormDataRibbonPage pdfFormDataRibbonPage1;
         private DevExpress.XtraPdfViewer.Bars.PdfFormDataBarPageGroup pdfFormDataBarPageGroup1;
         private DevExpress.XtraPdfViewer.Bars.PdfBarController pdfBarController1;
+        private DevExpress.XtraPdfViewer.Bars.PdfStickyNoteBarItem pdfStickyNoteBarItem1;
+        private DevExpress.XtraPdfViewer.Bars.PdfNoteCommentPageGroup pdfNoteCommentPageGroup1;
     }
 }
 
